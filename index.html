@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Responsive Minimal Design with Centered Nav Logo</title>
+    <style>
+      /* Global Styles */
+      body {
+        margin: 0;
+        background-color: #fdfdfd;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #333;
+      }
+
+      h1,
+      h2,
+      h3 {
+        letter-spacing: -0.5px;
+        margin-bottom: 0.5em;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      /* Container for All Content */
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+
+      /* Navigation Bar Styles */
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+        border-bottom: 1px solid #eaeaea;
+        margin-bottom: 20px;
+      }
+
+      nav .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        flex: 1 0 auto;
+      }
+
+      /* Updated Nav Link Styles */
+      nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin-left: 16px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+        padding: 4px 8px;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      /* Create an animated underline */
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        left: 50%;
+        bottom: -2px;
+        background-color: #333;
+        transition: width 0.3s ease, left 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: #000;
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+        left: 0;
+      }
+
+      /* Panel Style */
+      .panel {
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        padding: 24px;
+        margin: 16px 0;
+        box-sizing: border-box;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.5s ease forwards;
+        animation-delay: 0.2s;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .panel h1,
+      .panel h2,
+      .panel h3 {
+        margin-top: 0;
+      }
+
+      /* Updated Button Style */
+      .minimal-button {
+        padding: 10px 20px;
+        font-size: 1em;
+        font-weight: bold;
+        color: #333;
+        background-color: #f0f0f0;
+        border: #f0f0f0 1px solid;
+        border-radius: 20px;
+        cursor: pointer;
+        margin: 8px 0;
+        display: inline-block;
+        transition: border 0.3s ease;
+      }
+
+      .minimal-button:hover {
+        border: #333 1px solid;
+      }
+
+      /* Input (Text Box) Style */
+      .minimal-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .minimal-input:focus {
+        outline: none;
+        border-color: #ccc;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Form Group Spacing */
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: bold;
+      }
+
+      /* Grid Layout for Multiple Panels */
+      .panel-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .panel-grid .panel {
+        margin: 0;
+      }
+
+      /* On Larger Screens, Display Panels Side by Side */
+      @media (min-width: 768px) {
+        .panel-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* Responsive Nav Adjustments for Narrow Screens */
+      @media (max-width: 480px) {
+        nav {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        nav .logo {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+
+        nav ul {
+          justify-content: center;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+
+        nav ul li {
+          margin: 4px 8px;
+        }
+      }
+
+      /* Footer Style */
+      footer {
+        border-top: 1px solid #eaeaea;
+        padding: 20px 0;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.9em;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navigation Bar -->
+      <nav>
+        <div class="logo">Minimal Nav</div>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div id="home_page" class="section">
+
+        <!-- Welcome Panel -->
+        <div class="panel">
+            <h1>Welcome to Responsive Minimal Design</h1>
+            <p>
+            This page features a consistent minimalist style with a responsive layout. The navigation bar, panels, buttons, and text boxes are designed to work seamlessly on any device.
+            </p>
+            <button id="goto_learn" class="minimal-button">Learn More</button>
+        </div>
+
+        <!-- Grid of Panels -->
+        <div class="panel-grid">
+            <!-- Contact Panel -->
+            <div class="panel">
+            <h2>Contact Us</h2>
+            <div class="form-group">
+                <label for="contact-name">Name:</label>
+                <input
+                type="text"
+                id="contact-name"
+                class="minimal-input"
+                placeholder="Enter your name"
+                />
+            </div>
+            <div class="form-group">
+                <label for="contact-email">Email:</label>
+                <input
+                type="email"
+                id="contact-email"
+                class="minimal-input"
+                placeholder="Enter your email"
+                />
+            </div>
+            <button class="minimal-button">Submit</button>
+            </div>
+
+                <!-- Subscription Panel -->
+                <div class="panel">
+                <h2>Subscribe</h2>
+                <div class="form-group">
+                    <label for="subscribe-email">Email Address:</label>
+                    <input
+                    type="email"
+                    id="subscribe-email"
+                    class="minimal-input"
+                    placeholder="Your email"
+                    />
+                </div>
+                <button class="minimal-button">Subscribe</button>
+                </div>
+
+                <!-- More Info Panel -->
+                <div class="panel">
+                <h1>More Info</h1>
+                <p>
+                    This panel is to give you more info about the page and to demonstrate an additional panel.
+                </p>
+                </div>
+
+                <!-- More Info Panel 2 -->
+                <div class="panel">
+                <h1>More Info 2</h1>
+                <p>
+                    This panel is to give you more info about the page and to demonstrate an additional panel. Now with even more info.
+                </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="learn_page" class="section hidden">
+        
+            <!-- Welcome Panel -->
+            <div class="panel">
+                <h1>We will learn more</h1>
+                <p>
+                Hope you learn more with us today.
+                </p>
+                <button id="goto_home" class="minimal-button">Home</button>
+            </div>
+    
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+        document.getElementById("goto_learn").addEventListener('click', () => {
+            document.getElementById("learn_page").hidden = false;
+            document.getElementById("home_page").hidden = true;
+        });
+
+        document.getElementById("goto_home").addEventListener('click', () => {
+            document.getElementById("learn_page").hidden = true;
+            document.getElementById("home_page").hidden = false;
+        });
+
+        let global_page_sections = [];
+        (function collect_sections(){
+            [...document.getElementsByClassName("section")].forEach((element) => {
+                global_page_sections.push(element);
+
+                if (element.classList.contains("hidden")){
+                    element.hidden = true;
+                }
+            });
+        })();
+    </script>
+  </body>
+</html>
